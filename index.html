@@ -6,22 +6,26 @@
   <title>Insta Coin Mining (Demo)</title>
   <style>
     body{
-      font-family: Arial, sans-serif;
-      background:#0f1724;
-      color:#fff;
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      color:#e5e7eb;
       display:flex;
       justify-content:center;
       align-items:center;
       min-height:100vh;
+      margin:0;
     }
     .app{
-      width:360px;
-      background:#111827;
-      border-radius:16px;
-      padding:20px;
-      box-shadow:0 10px 30px rgba(0,0,0,.5);
+      width:380px;
+      background: linear-gradient(180deg, #020617, #020617) padding-box,
+                  linear-gradient(135deg, #6366f1, #22d3ee) border-box;
+      border:1px solid transparent;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 20px 50px rgba(0,0,0,.6);
+      backdrop-filter: blur(6px);
     }
-    h1{text-align:center;font-size:22px;margin-bottom:10px}
+    h1{text-align:center;font-size:24px;margin-bottom:6px;font-weight:600}
     .coins{
       text-align:center;
       font-size:28px;
@@ -56,9 +60,16 @@
   <div class="app">
     <h1>Instagram Coin Mining</h1>
 
-    <div class="coins">Coins: <span id="coin">0</span></div>
+    <div class="login">
+      <input id="username" placeholder="Enter Instagram Username" style="width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:10px" />
+      <button class="buy" style="width:100%" onclick="login()">Login</button>
+    </div>
 
-    <button class="mine" id="mineBtn">⛏️ Start Mining</button>
+    <div class="coins" style="display:none" id="dashboard">Coins: <span id="coin">0</span></div>
+
+    <button class="mine" id="mineBtn" style="display:none">⛏️ Start Mining</button>
+
+    <button class="buy" id="dailyBtn" style="display:none;margin-bottom:10px" onclick="dailyBonus()">🎁 Daily Bonus</button>
 
     <div class="shop">
       <h3>Followers Shop (Demo)</h3>
@@ -87,20 +98,46 @@
   <script>
     let coins = 0;
     let mining = false;
+    let user = null;
+
     const coinEl = document.getElementById('coin');
     const mineBtn = document.getElementById('mineBtn');
+    const dash = document.getElementById('dashboard');
+    const dailyBtn = document.getElementById('dailyBtn');
+
+    function login(){
+      const u = document.getElementById('username').value.trim();
+      if(!u) return alert('Enter Instagram username');
+      user = u;
+      localStorage.setItem('ig_user', u);
+      dash.style.display = 'block';
+      mineBtn.style.display = 'block';
+      dailyBtn.style.display = 'block';
+      alert('Welcome @' + u);
+    }
 
     mineBtn.onclick = () => {
       if(mining) return;
       mining = true;
       mineBtn.disabled = true;
       mineBtn.innerText = 'Mining...';
-
-      // 2 second = 1 coin
       setInterval(() => {
         coins++;
         coinEl.innerText = coins;
       }, 2000);
+    }
+
+    function dailyBonus(){
+      const last = localStorage.getItem('daily');
+      const today = new Date().toDateString();
+      if(last === today){
+        alert('❌ Daily bonus already claimed');
+        return;
+      }
+      coins += 50;
+      coinEl.innerText = coins;
+      localStorage.setItem('daily', today);
+      alert('🎉 You got 50 coins daily bonus');
     }
 
     function buy(cost){
