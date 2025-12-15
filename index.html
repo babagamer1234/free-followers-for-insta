@@ -1,179 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insta Coin Mining (Demo)</title>
-  <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
-  <style>
-    body{
-      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #1e293b, #020617);
-      color:#e5e7eb;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:100vh;
-      margin:0;
-    }
-    .app{
-      width:380px;
-      background: linear-gradient(180deg, #020617, #020617) padding-box,
-                  linear-gradient(135deg, #6366f1, #22d3ee) border-box;
-      border:1px solid transparent;
-      border-radius:20px;
-      padding:24px;
-      box-shadow:0 20px 50px rgba(0,0,0,.6);
-      backdrop-filter: blur(6px);
-    }
-    h1{text-align:center;font-size:24px;margin-bottom:6px;font-weight:600}
-    .coins{
-      text-align:center;
-      font-size:28px;
-      margin:15px 0;
-    }
-    button{
-      width:100%;
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      font-size:16px;
-      cursor:pointer;
-      margin-top:10px;
-    }
-    .mine{background:#22c55e;color:#000}
-    .mine:disabled{background:#555;cursor:not-allowed}
-    .shop{margin-top:20px}
-    .item{
-      background:#1f2933;
-      padding:12px;
-      border-radius:10px;
-      margin-bottom:10px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .buy{background:#3b82f6;color:#fff;width:auto;padding:8px 14px}
-    .note{font-size:12px;color:#aaa;margin-top:10px;text-align:center}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Coin Mining (Demo)</title>
+
+<!-- Monetag Verification -->
+<meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
+
+<style>
+body{
+  font-family: system-ui, sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  margin:0;
+}
+.app{
+  width:380px;
+  background:#020617;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
+}
+h1{text-align:center}
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-size:15px;
+  margin-top:10px;
+}
+.mine{background:#22c55e}
+.buy{background:#3b82f6;color:#fff}
+.note{font-size:12px;color:#aaa;text-align:center;margin-top:10px}
+</style>
+
+<!-- 🔥 ALL-IN-ONE #1 (HEADER) -->
+<script src="https://quge5.com/88/tag.min.js"
+        data-zone="192948"
+        async
+        data-cfasync="false"></script>
+
 </head>
 <body>
-  <div class="app">
-    <h1>Instagram Coin Mining</h1>
 
-    <div class="login">
-      <input id="username" placeholder="Enter Instagram Username" style="width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:10px" />
-      <button class="buy" style="width:100%" onclick="login()">Login</button>
-    </div>
+<div class="app">
+<h1>Instagram Coin Mining</h1>
 
-    <div class="coins" style="display:none" id="dashboard">Coins: <span id="coin">0</span></div>
+<input placeholder="Instagram Username"
+ style="width:100%;padding:10px;border-radius:8px;border:none">
 
-    <button class="mine" id="mineBtn" style="display:none">⛏️ Start Mining</button>
+<button class="mine">⛏ Start Mining</button>
 
-    <button class="buy" id="dailyBtn" style="display:none;margin-bottom:10px" onclick="dailyBonus()">🎁 Daily Bonus</button>
+<!-- 🟢 NATIVE BANNER #1 (TOP) -->
+<div style="margin:18px 0;text-align:center">
+<script src="https://quge5.com/88/tag.min.js"
+        data-zone="192949"
+        async data-cfasync="false"></script>
+</div>
 
-    <div class="shop">
-      <h3>Followers Shop (Demo)</h3>
+<button class="buy">🎁 Daily Bonus</button>
 
-      <div class="item">
-        <span>1000 Followers</span>
-        <button class="buy" onclick="buy(500)">500 Coins</button>
-      </div>
+<!-- 🟢 NATIVE BANNER #2 (MID) -->
+<div style="margin:30px 0;text-align:center">
+<script src="https://quge5.com/88/tag.min.js"
+        data-zone="192951"
+        async data-cfasync="false"></script>
+</div>
 
-      <div class="item">
-        <span>2000 Followers</span>
-        <button class="buy" onclick="buy(900)">900 Coins</button>
-      </div>
+<div class="note">
+⚠️ Demo project only. No real Instagram services.
+</div>
+</div>
 
-      <div class="item">
-        <span>5000 Followers</span>
-        <button class="buy" onclick="buy(2000)">2000 Coins</button>
-      </div>
-    </div>
+<!-- 🔥 POP / VIGNETTE (ONLY ONE – CPM BOOSTER) -->
+<script>
+(function(s){
+  s.dataset.zone='10323043';
+  s.src='https://groleegni.net/vignette.min.js';
+})([document.documentElement, document.body]
+  .filter(Boolean)
+  .pop()
+  .appendChild(document.createElement('script')));
+</script>
 
-    <div class="note">
-      ⚠️ Demo project only. Real Instagram followers delivery is NOT included.
-    </div>
-  </div>
-
-  <script>
-    let coins = 0;
-    let mining = false;
-    let user = null;
-
-    const coinEl = document.getElementById('coin');
-    const mineBtn = document.getElementById('mineBtn');
-    const dash = document.getElementById('dashboard');
-    const dailyBtn = document.getElementById('dailyBtn');
-
-    function login(){
-      const u = document.getElementById('username').value.trim();
-      if(!u) return alert('Enter Instagram username');
-      user = u;
-      localStorage.setItem('ig_user', u);
-      dash.style.display = 'block';
-      mineBtn.style.display = 'block';
-      dailyBtn.style.display = 'block';
-      alert('Welcome @' + u);
-    }
-
-    mineBtn.onclick = () => {
-      if(mining) return;
-      mining = true;
-      mineBtn.disabled = true;
-      mineBtn.innerText = 'Mining...';
-      setInterval(() => {
-        coins++;
-        coinEl.innerText = coins;
-      }, 2000);
-    }
-
-    function dailyBonus(){
-      const last = localStorage.getItem('daily');
-      const today = new Date().toDateString();
-      if(last === today){
-        alert('❌ Daily bonus already claimed');
-        return;
-      }
-      coins += 50;
-      coinEl.innerText = coins;
-      localStorage.setItem('daily', today);
-      alert('🎉 You got 50 coins daily bonus');
-    }
-
-    function buy(cost){
-      if(coins >= cost){
-        coins -= cost;
-        coinEl.innerText = coins;
-        alert('✅ Purchase successful (Demo)!');
-      }else{
-        alert('❌ Not enough coins');
-      }
-    }
-  </script>
-
-  <!-- ADS: Top Banner -->
-  <div style="margin:20px 0;text-align:center">
-    <script src="https://quge5.com/88/tag.min.js" data-zone="192948" async data-cfasync="false"></script>
-  </div>
-
-  <!-- ADS: Mid Content -->
-  <div style="margin:40px 0;text-align:center">
-    <script src="https://quge5.com/88/tag.min.js" data-zone="192949" async data-cfasync="false"></script>
-  </div>
-
-  <!-- ADS: Vignette / Interstitial -->
-  <script>(function(s){s.dataset.zone='10323043',s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
-  <!-- ADS: Lower Content -->
-  <div style="margin:40px 0;text-align:center">
-    <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
-  </div>
-
-  <!-- ADS: Footer -->
-  <div style="margin:20px 0 60px;text-align:center">
-    <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
-  </div>
+<!-- 🔥 ALL-IN-ONE #2 (FOOTER) -->
+<script src="https://nap5k.com/tag.min.js"
+        data-zone="10328350"
+        async></script>
 
 </body>
 </html>
