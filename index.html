@@ -26,7 +26,14 @@ body{
   padding:22px;
   box-shadow:0 20px 50px rgba(0,0,0,.6);
 }
-h1{text-align:center}
+h1{text-align:center;margin-bottom:5px}
+input{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  margin-top:10px;
+}
 button{
   width:100%;
   padding:12px;
@@ -34,19 +41,35 @@ button{
   border-radius:10px;
   font-size:15px;
   margin-top:10px;
+  cursor:pointer;
 }
 .mine{background:#22c55e}
 .buy{background:#3b82f6;color:#fff}
+.withdraw{background:#f59e0b;color:#000}
 .note{font-size:12px;color:#aaa;text-align:center;margin-top:10px}
 
-/* Ad container styling to prevent overlap */
-.ad-container{
-  margin:20px 0;
+.coins{
   text-align:center;
+  font-size:18px;
+  margin-top:10px;
+  font-weight:600;
+}
+
+/* Ad container */
+.ad-container{
+  margin:18px 0;
+  text-align:center;
+}
+
+select{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  margin-top:10px;
 }
 </style>
 
-<!-- 🔥 HEADER / TOP BANNER -->
+<!-- 🔥 TOP BANNER -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192948" async data-cfasync="false"></script>
 </div>
@@ -57,29 +80,44 @@ button{
 <div class="app">
 <h1>Instagram Coin Mining</h1>
 
-<input placeholder="Instagram Username"
- style="width:100%;padding:10px;border-radius:8px;border:none">
+<input id="username" placeholder="Instagram Username">
 
-<button class="mine">⛏ Start Mining</button>
+<div class="coins">
+Coins: <span id="coinCount">0</span>
+</div>
 
-<!-- 🟢 IN-CONTENT MID BANNER #1 -->
+<button class="mine" onclick="startMining()">⛏ Start Mining</button>
+
+<!-- 🔥 MID AD -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192949" async data-cfasync="false"></script>
 </div>
 
-<button class="buy">🎁 Daily Bonus</button>
+<button class="buy" onclick="dailyBonus()">🎁 Daily Bonus (+200)</button>
 
-<!-- 🟢 IN-CONTENT MID BANNER #2 -->
+<!-- 🔥 MID AD -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
 </div>
 
+<!-- 🔽 Withdraw Section -->
+<select id="withdrawOption">
+  <option value="0">Select Withdraw Option</option>
+  <option value="600">600 Coins = 900 Followers</option>
+  <option value="1200">1200 Coins = 1800 Followers</option>
+  <option value="2500">2500 Coins = 4000 Followers</option>
+  <option value="5000">5000 Coins = 7500 Followers</option>
+  <option value="10000">10000 Coins = 15000 Followers</option>
+</select>
+
+<button class="withdraw" onclick="withdraw()">💸 Withdraw</button>
+
 <div class="note">
-⚠️ Demo project only. No real Instagram services.
+⚠️ Demo only. No real Instagram followers will be delivered.
 </div>
 </div>
 
-<!-- 🔥 POP-UP / VIGNETTE CPM BOOSTER #1 -->
+<!-- 🔥 POPUP ADS -->
 <script>
 (function(s){
   s.dataset.zone='10328368';
@@ -87,7 +125,6 @@ button{
 })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
 </script>
 
-<!-- 🔥 POP-UP / VIGNETTE CPM BOOSTER #2 -->
 <script>
 (function(s){
   s.dataset.zone='10323043';
@@ -95,15 +132,52 @@ button{
 })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
 </script>
 
-<!-- 🔥 FOOTER BANNER -->
+<!-- 🔥 FOOTER AD -->
 <div class="ad-container">
 <script src="https://nap5k.com/tag.min.js" data-zone="10328350" async></script>
 </div>
 
-<!-- 🔥 EXTRA / OPTIONAL AD -->
+<!-- 🔥 EXTRA AD -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
 </div>
+
+<script>
+let coins = 0;
+let miningInterval;
+
+function updateCoins(){
+  document.getElementById("coinCount").innerText = coins;
+}
+
+function startMining(){
+  if(miningInterval) return;
+  miningInterval = setInterval(()=>{
+    coins += 5;
+    updateCoins();
+  },1000);
+}
+
+function dailyBonus(){
+  coins += 200;
+  updateCoins();
+}
+
+function withdraw(){
+  const need = parseInt(document.getElementById("withdrawOption").value);
+  if(need === 0){
+    alert("Please select a withdraw option");
+    return;
+  }
+  if(coins < need){
+    alert("❌ Not enough coins");
+    return;
+  }
+  coins -= need;
+  updateCoins();
+  alert("✅ Withdraw request submitted!\nProcessing may take 24–48 hours (Demo)");
+}
+</script>
 
 </body>
 </html>
