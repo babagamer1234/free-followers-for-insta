@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instagram Coin Mining (Demo)</title>
 
-<!-- Monetag Verification -->
 <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
 <style>
 body{
-  font-family: system-ui, sans-serif;
-  background:#020617;
-  color:#e5e7eb;
+  font-family: 'Segoe UI', sans-serif;
+  background:#0c0c1c;
+  color:#fff;
   display:flex;
   justify-content:center;
   align-items:flex-start;
@@ -21,74 +20,103 @@ body{
   margin:0;
 }
 .app{
-  width:380px;
-  background:#0b111f;
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 20px 50px rgba(0,0,0,.6);
+  width:400px;
+  background:#11111f;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 0 20px rgba(0,0,0,0.7);
+  text-align:center;
 }
-h1{text-align:center;margin-bottom:5px;font-size:22px}
+h1{
+  font-size:24px;
+  margin-bottom:10px;
+  background: linear-gradient(90deg, #ff004f, #00f2ff, #ff00f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+  0%{background-position:0%}
+  100%{background-position:100%}
+}
+
 input{
   width:100%;
   padding:12px;
-  border-radius:8px;
+  border-radius:10px;
   border:none;
-  margin-top:10px;
+  margin:10px 0;
   font-size:14px;
-  background:#1f273d;
+  background:#1b1b30;
   color:#fff;
 }
+
 button{
   width:100%;
   padding:12px;
   border:none;
-  border-radius:10px;
-  font-size:15px;
+  border-radius:12px;
+  font-size:16px;
   margin-top:10px;
   cursor:pointer;
-  transition:all 0.3s;
+  font-weight:600;
+  color:#fff;
+  transition:0.3s;
+  background: linear-gradient(45deg, #ff0055, #00f2ff, #ff00f7, #00ff2a);
+  background-size:300% 300%;
 }
-button:hover{opacity:0.85}
-.mine{background:#22c55e;color:#fff}
-.buy{background:#3b82f6;color:#fff}
-.withdraw{background:#f59e0b;color:#000}
-.note{font-size:12px;color:#aaa;text-align:center;margin-top:10px}
+button:hover{
+  filter: brightness(1.2);
+  animation: gradientBG 3s ease infinite;
+}
+@keyframes gradientBG{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 
 .coins{
-  text-align:center;
-  font-size:18px;
-  margin-top:10px;
-  font-weight:600;
-  background:#111828;
+  font-size:20px;
+  font-weight:bold;
+  margin:10px 0;
   padding:10px;
-  border-radius:10px;
-  margin-bottom:10px;
+  border-radius:12px;
+  background: linear-gradient(90deg, #ff0055, #00f2ff, #ff00f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 5s linear infinite;
 }
 
-/* Ad container */
+.note{
+  font-size:12px;
+  color:#aaa;
+  margin-top:10px;
+}
+
 .ad-container{
-  margin:18px 0;
+  margin:15px 0;
   text-align:center;
 }
 
 select{
   width:100%;
-  padding:10px;
-  border-radius:8px;
-  margin-top:10px;
-  background:#1f273d;
-  color:#fff;
+  padding:12px;
+  border-radius:10px;
   border:none;
+  background:#1b1b30;
+  color:#fff;
+  margin-top:10px;
+  font-size:14px;
 }
 </style>
 
-<!-- 🔥 TOP BANNER -->
+<!-- 🔥 TOP AD -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192948" async data-cfasync="false"></script>
 </div>
 
 <body>
-
 <div class="app">
 <h1>Instagram Coin Mining</h1>
 
@@ -100,19 +128,16 @@ Coins: <span id="coinCount">0</span>
 
 <button class="mine" onclick="startMining()">⛏ Start Mining</button>
 
-<!-- 🔥 MID AD -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192949" async data-cfasync="false"></script>
 </div>
 
 <button class="buy" onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
 
-<!-- 🔥 MID AD -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
 </div>
 
-<!-- 🔽 Withdraw Section -->
 <select id="withdrawOption">
   <option value="0">Select Withdraw Option</option>
   <option value="600">600 Coins = 900 Followers</option>
@@ -165,13 +190,13 @@ function updateCoins(){
 function startMining(){
   if(miningInterval) return;
   miningInterval = setInterval(()=>{
-    coins += 1; // 1 coin per interval
+    coins += 1; // 1 coin per 3 sec
     updateCoins();
-  },3000); // 3 sec
+  },3000);
 }
 
 function dailyBonus(){
-  coins += 40; // daily bonus reduced
+  coins += 40;
   updateCoins();
 }
 
