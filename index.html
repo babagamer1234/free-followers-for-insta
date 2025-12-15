@@ -35,12 +35,10 @@ h1{
   -webkit-text-fill-color: transparent;
   animation: rainbow 5s linear infinite;
 }
-
 @keyframes rainbow {
   0%{background-position:0%}
   100%{background-position:100%}
 }
-
 input{
   width:100%;
   padding:12px;
@@ -51,7 +49,6 @@ input{
   background:#1b1b30;
   color:#fff;
 }
-
 button{
   width:100%;
   padding:12px;
@@ -75,7 +72,6 @@ button:hover{
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
-
 .coins{
   font-size:20px;
   font-weight:bold;
@@ -87,18 +83,15 @@ button:hover{
   -webkit-text-fill-color: transparent;
   animation: rainbow 5s linear infinite;
 }
-
 .note{
   font-size:12px;
   color:#aaa;
   margin-top:10px;
 }
-
 .ad-container{
   margin:15px 0;
   text-align:center;
 }
-
 select{
   width:100%;
   padding:12px;
@@ -111,7 +104,7 @@ select{
 }
 </style>
 
-<!-- 🔥 TOP AD -->
+<!-- 🔥 TOP BANNER -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192948" async data-cfasync="false"></script>
 </div>
@@ -128,12 +121,14 @@ Coins: <span id="coinCount">0</span>
 
 <button class="mine" onclick="startMining()">⛏ Start Mining</button>
 
+<!-- 🔥 MID BANNER 1 -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192949" async data-cfasync="false"></script>
 </div>
 
 <button class="buy" onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
 
+<!-- 🔥 MID BANNER 2 -->
 <div class="ad-container">
 <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
 </div>
@@ -154,7 +149,7 @@ Coins: <span id="coinCount">0</span>
 </div>
 </div>
 
-<!-- 🔥 POPUP ADS -->
+<!-- 🔥 POPUP / VIGNETTE ADS -->
 <script>
 (function(s){
   s.dataset.zone='10328368';
@@ -169,14 +164,9 @@ Coins: <span id="coinCount">0</span>
 })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
 </script>
 
-<!-- 🔥 FOOTER AD -->
+<!-- 🔥 FOOTER BANNER -->
 <div class="ad-container">
 <script src="https://nap5k.com/tag.min.js" data-zone="10328350" async></script>
-</div>
-
-<!-- 🔥 EXTRA AD -->
-<div class="ad-container">
-<script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
 </div>
 
 <script>
@@ -190,7 +180,7 @@ function updateCoins(){
 function startMining(){
   if(miningInterval) return;
   miningInterval = setInterval(()=>{
-    coins += 1; // 1 coin per 3 sec
+    coins += 1;
     updateCoins();
   },3000);
 }
