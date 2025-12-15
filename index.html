@@ -38,13 +38,18 @@ button{
 .mine{background:#22c55e}
 .buy{background:#3b82f6;color:#fff}
 .note{font-size:12px;color:#aaa;text-align:center;margin-top:10px}
+
+/* Ad container styling to prevent overlap */
+.ad-container{
+  margin:20px 0;
+  text-align:center;
+}
 </style>
 
-<!-- 🔥 ALL-IN-ONE #1 (HEADER) -->
-<script src="https://quge5.com/88/tag.min.js"
-        data-zone="192948"
-        async
-        data-cfasync="false"></script>
+<!-- 🔥 HEADER / TOP BANNER -->
+<div class="ad-container">
+<script src="https://quge5.com/88/tag.min.js" data-zone="192948" async data-cfasync="false"></script>
+</div>
 
 </head>
 <body>
@@ -57,20 +62,16 @@ button{
 
 <button class="mine">⛏ Start Mining</button>
 
-<!-- 🟢 NATIVE BANNER #1 (TOP) -->
-<div style="margin:18px 0;text-align:center">
-<script src="https://quge5.com/88/tag.min.js"
-        data-zone="192949"
-        async data-cfasync="false"></script>
+<!-- 🟢 IN-CONTENT MID BANNER #1 -->
+<div class="ad-container">
+<script src="https://quge5.com/88/tag.min.js" data-zone="192949" async data-cfasync="false"></script>
 </div>
 
 <button class="buy">🎁 Daily Bonus</button>
 
-<!-- 🟢 NATIVE BANNER #2 (MID) -->
-<div style="margin:30px 0;text-align:center">
-<script src="https://quge5.com/88/tag.min.js"
-        data-zone="192951"
-        async data-cfasync="false"></script>
+<!-- 🟢 IN-CONTENT MID BANNER #2 -->
+<div class="ad-container">
+<script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
 </div>
 
 <div class="note">
@@ -78,21 +79,31 @@ button{
 </div>
 </div>
 
-<!-- 🔥 POP / VIGNETTE (ONLY ONE – CPM BOOSTER) -->
+<!-- 🔥 POP-UP / VIGNETTE CPM BOOSTER #1 -->
+<script>
+(function(s){
+  s.dataset.zone='10328368';
+  s.src='https://groleegni.net/vignette.min.js';
+})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+</script>
+
+<!-- 🔥 POP-UP / VIGNETTE CPM BOOSTER #2 -->
 <script>
 (function(s){
   s.dataset.zone='10323043';
   s.src='https://groleegni.net/vignette.min.js';
-})([document.documentElement, document.body]
-  .filter(Boolean)
-  .pop()
-  .appendChild(document.createElement('script')));
+})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
 </script>
 
-<!-- 🔥 ALL-IN-ONE #2 (FOOTER) -->
-<script src="https://nap5k.com/tag.min.js"
-        data-zone="10328350"
-        async></script>
+<!-- 🔥 FOOTER BANNER -->
+<div class="ad-container">
+<script src="https://nap5k.com/tag.min.js" data-zone="10328350" async></script>
+</div>
+
+<!-- 🔥 EXTRA / OPTIONAL AD -->
+<div class="ad-container">
+<script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
+</div>
 
 </body>
 </html>
