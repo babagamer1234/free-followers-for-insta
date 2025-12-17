@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,7 +8,7 @@
 <!-- Monetag Verification -->
 <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
-<!-- ✅ New Meta Tag Added -->
+<!-- Additional Meta Tag -->
 <meta name="27a78804527e284fc64e00ec61efe745ac4cdde2" content="27a78804527e284fc64e00ec61efe745ac4cdde2" />
 
 <style>
@@ -60,3 +62,123 @@ button{
 .note{font-size:12px;color:#aaa;margin-top:10px}
 </style>
 </head>
+
+<body>
+
+<div class="app">
+<h1>Instagram Coin Mining</h1>
+
+<input placeholder="Instagram Username">
+
+<div class="coins">Coins: <span id="coinCount">0</span></div>
+
+<button onclick="startMining()">⛏ Start Mining</button>
+
+<!-- 2️⃣ ADSTERRA NATIVE BANNER -->
+<div class="ad">
+<script async data-cfasync="false" src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d740d76d/invoke.js"></script>
+<div id="container-e54a8fc77291ff902e4162c7d740d76d"></div>
+</div>
+
+<button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
+
+<select id="withdrawOption">
+<option value="0">Select Withdraw</option>
+<option value="600">600 Coins = 900 Followers</option>
+<option value="1200">1200 Coins = 1800 Followers</option>
+<option value="2500">2500 Coins = 4000 Followers</option>
+</select>
+
+<button onclick="withdraw()">💸 Withdraw</button>
+
+<div class="note">⚠️ Demo only</div>
+</div>
+
+<!-- ================= ADS (GLOBAL LOAD) ================= -->
+
+<!-- 1️⃣ ADSTERRA POPUNDER -->
+<script src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js"></script>
+
+<!-- 3️⃣ ADSTERRA SOCIAL BAR -->
+<script src="https://pl28275974.effectivegatecpm.com/8d/e3/63/8de36310671a092aedf178c2a7898e22.js"></script>
+
+<!-- 4️⃣ VIGNETTE #1 -->
+<script>
+(function(s){
+  s.dataset.zone='10328368';
+  s.src='https://groleegni.net/vignette.min.js';
+})([document.documentElement,document.body].filter(Boolean).pop()
+.appendChild(document.createElement('script')));
+</script>
+
+<!-- 5️⃣ MONETAG / NAP5K -->
+<script>
+(function(s){
+  s.dataset.zone='10328350';
+  s.src='https://nap5k.com/tag.min.js';
+})([document.documentElement,document.body].filter(Boolean).pop()
+.appendChild(document.createElement('script')));
+</script>
+
+<!-- 6️⃣ VIGNETTE #2 -->
+<script>
+(function(s){
+  s.dataset.zone='10323043';
+  s.src='https://groleegni.net/vignette.min.js';
+})([document.documentElement,document.body].filter(Boolean).pop()
+.appendChild(document.createElement('script')));
+</script>
+
+<!-- 7️⃣ BIG-BRIEF SCRIPT -->
+<script>
+(function(gphxf){
+var d=document,
+    s=d.createElement('script'),
+    l=d.scripts[d.scripts.length-1];
+s.settings=gphxf||{};
+s.src="//big-brief.com/bpXUV.sBdrGDlb0yYrWMcA/be/m/9uuGZQUFl/kVPoTZY/3OM/j/gD2UOBTDUJt/N/jNcUyhOjDYYu5pNkgz";
+s.async=true;
+s.referrerPolicy='no-referrer-when-downgrade';
+l.parentNode.insertBefore(s,l);
+})({})
+</script>
+
+<!-- 8️⃣ STARRY-PERCEPTION SCRIPT -->
+<script src="https://starry-perception.com/b/3.Vl0vPh3/pvvWbamgV/J/ZxD/0H2qN_zKIF4XNqjkkm5iL/TqY/3dM/jygS3GMmDVAe"></script>
+
+<!-- ================= APP LOGIC ================= -->
+<script>
+let coins=0,intv;
+const KEY="daily_bonus",TIME=86400000;
+
+function update(){coinCount.innerText=coins}
+
+function startMining(){
+  if(intv)return;
+  intv=setInterval(()=>{coins++;update()},3000);
+}
+
+function dailyBonus(){
+  let last=localStorage.getItem(KEY),now=Date.now();
+  if(last && now-last<TIME){
+    let r=TIME-(now-last),
+    h=(r/36e5)|0,
+    m=(r%36e5/6e4)|0;
+    return alert(`Bonus already taken\n${h}h ${m}m left`);
+  }
+  coins+=40;update();
+  localStorage.setItem(KEY,now);
+  alert("🎁 +40 coins");
+}
+
+function withdraw(){
+  let n=+withdrawOption.value;
+  if(!n)return alert("Option select karo");
+  if(coins<n)return alert("Coins kam hain");
+  coins-=n;update();
+  alert("Withdraw submitted (Demo)");
+}
+</script>
+
+</body>
+</html>
