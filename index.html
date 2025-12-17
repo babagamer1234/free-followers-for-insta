@@ -60,9 +60,6 @@ button{
   font-weight:bold;
   margin:10px 0;
 }
-.ad{
-  margin:15px 0;
-}
 .note{
   font-size:12px;
   color:#aaa;
@@ -74,62 +71,103 @@ button{
 <body>
 
 <div class="app">
-<h1>Instagram Coin Mining</h1>
+  <h1>Instagram Coin Mining</h1>
 
-<input placeholder="Instagram Username">
+  <input placeholder="Instagram Username">
 
-<div class="coins">
-Coins: <span id="coinCount">0</span>
+  <div class="coins">
+    Coins: <span id="coinCount">0</span>
+  </div>
+
+  <button onclick="startMining()">⛏ Start Mining</button>
+
+  <button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
+
+  <select id="withdrawOption">
+    <option value="0">Select Withdraw Option</option>
+    <option value="600">600 Coins = 900 Followers</option>
+    <option value="1200">1200 Coins = 1800 Followers</option>
+    <option value="2500">2500 Coins = 4000 Followers</option>
+  </select>
+
+  <button onclick="withdraw()">💸 Withdraw</button>
+
+  <div class="note">
+    ⚠️ Demo only. No real Instagram followers will be delivered.
+  </div>
 </div>
 
-<button onclick="startMining()">⛏ Start Mining</button>
+<!-- ================= ADS SECTION ================= -->
 
-<!-- ✅ ONLY ONE BANNER (MID PAGE) -->
-<div class="ad">
-<script src="https://quge5.com/88/tag.min.js"
-        data-zone="192948"
-        async
-        data-cfasync="false"></script>
-</div>
-
-<button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
-
-<select id="withdrawOption">
-  <option value="0">Select Withdraw Option</option>
-  <option value="600">600 Coins = 900 Followers</option>
-  <option value="1200">1200 Coins = 1800 Followers</option>
-  <option value="2500">2500 Coins = 4000 Followers</option>
-</select>
-
-<button onclick="withdraw()">💸 Withdraw</button>
-
-<div class="note">
-⚠️ Demo only. No real Instagram followers will be delivered.
-</div>
-</div>
-
-<!-- ✅ ONLY ONE VIGNETTE / INTERSTITIAL -->
+<!-- 🔥 Ad 1 : Vignette -->
 <script>
 (function(s){
   s.dataset.zone='10328368';
   s.src='https://groleegni.net/vignette.min.js';
-})(document.body.appendChild(document.createElement('script')));
+})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
 </script>
 
+<!-- 🔥 Ad 2 : Vignette -->
 <script>
-let coins=0, intv;
-function update(){coinCount.innerText=coins;}
-function startMining(){
- if(intv) return;
- intv=setInterval(()=>{coins++;update();},3000);
+(function(s){
+  s.dataset.zone='10323043';
+  s.src='https://groleegni.net/vignette.min.js';
+})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+</script>
+
+<!-- 🔥 Ad 3 : Banner / Script -->
+<script>
+(function(s){
+  s.dataset.zone='10328350';
+  s.src='https://nap5k.com/tag.min.js';
+})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+</script>
+
+<!-- ================= LOGIC ================= -->
+
+<script>
+let coins = 0;
+let miningInterval = null;
+
+const BONUS_KEY = "lastDailyBonusTime";
+const BONUS_TIME = 24 * 60 * 60 * 1000;
+
+function update(){
+  document.getElementById("coinCount").innerText = coins;
 }
-function dailyBonus(){coins+=40;update();}
+
+function startMining(){
+  if(miningInterval) return;
+  miningInterval = setInterval(()=>{
+    coins++;
+    update();
+  }, 3000);
+}
+
+function dailyBonus(){
+  const last = localStorage.getItem(BONUS_KEY);
+  const now = Date.now();
+
+  if(last && (now - last) < BONUS_TIME){
+    const rem = BONUS_TIME - (now - last);
+    const h = Math.floor(rem / (1000*60*60));
+    const m = Math.floor((rem % (1000*60*60)) / (1000*60));
+    return alert(`⏳ Daily bonus already claimed\nTry again in ${h}h ${m}m`);
+  }
+
+  coins += 40;
+  update();
+  localStorage.setItem(BONUS_KEY, now);
+  alert("🎁 Daily bonus +40 coins added!");
+}
+
 function withdraw(){
- let n=+withdrawOption.value;
- if(!n) return alert("Option select karo");
- if(coins<n) return alert("Coins kam hain");
- coins-=n; update();
- alert("Withdraw request submitted (Demo)");
+  const need = +document.getElementById("withdrawOption").value;
+  if(!need) return alert("Option select karo");
+  if(coins < need) return alert("Coins kam hain");
+  coins -= need;
+  update();
+  alert("Withdraw request submitted (Demo)");
 }
 </script>
 
