@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instagram Coin Mining (Demo)</title>
 
+<!-- ✅ Monetag Verification -->
 <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
 <style>
@@ -14,7 +15,6 @@ body{
   color:#fff;
   display:flex;
   justify-content:center;
-  align-items:flex-start;
   padding:20px;
   min-height:100vh;
   margin:0;
@@ -30,22 +30,16 @@ body{
 h1{
   font-size:24px;
   margin-bottom:10px;
-  background: linear-gradient(90deg, #ff004f, #00f2ff, #ff00f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rainbow 5s linear infinite;
+  background: linear-gradient(90deg,#ff004f,#00f2ff,#ff00f7);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
-@keyframes rainbow {
-  0%{background-position:0%}
-  100%{background-position:100%}
-}
-input{
+input, select{
   width:100%;
   padding:12px;
   border-radius:10px;
   border:none;
   margin:10px 0;
-  font-size:14px;
   background:#1b1b30;
   color:#fff;
 }
@@ -59,150 +53,83 @@ button{
   cursor:pointer;
   font-weight:600;
   color:#fff;
-  transition:0.3s;
-  background: linear-gradient(45deg, #ff0055, #00f2ff, #ff00f7, #00ff2a);
-  background-size:300% 300%;
-}
-button:hover{
-  filter: brightness(1.2);
-  animation: gradientBG 3s ease infinite;
-}
-@keyframes gradientBG{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  background:linear-gradient(45deg,#ff0055,#00f2ff,#ff00f7);
 }
 .coins{
   font-size:20px;
   font-weight:bold;
   margin:10px 0;
-  padding:10px;
-  border-radius:12px;
-  background: linear-gradient(90deg, #ff0055, #00f2ff, #ff00f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rainbow 5s linear infinite;
+}
+.ad{
+  margin:15px 0;
 }
 .note{
   font-size:12px;
   color:#aaa;
   margin-top:10px;
 }
-.ad-container{
-  margin:15px 0;
-  text-align:center;
-}
-select{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  background:#1b1b30;
-  color:#fff;
-  margin-top:10px;
-  font-size:14px;
-}
 </style>
-
-<!-- 🔥 TOP BANNER -->
-<div class="ad-container">
-<script src="https://quge5.com/88/tag.min.js" data-zone="192948" async data-cfasync="false"></script>
-</div>
+</head>
 
 <body>
+
 <div class="app">
 <h1>Instagram Coin Mining</h1>
 
-<input id="username" placeholder="Instagram Username">
+<input placeholder="Instagram Username">
 
 <div class="coins">
 Coins: <span id="coinCount">0</span>
 </div>
 
-<button class="mine" onclick="startMining()">⛏ Start Mining</button>
+<button onclick="startMining()">⛏ Start Mining</button>
 
-<!-- 🔥 MID BANNER 1 -->
-<div class="ad-container">
-<script src="https://quge5.com/88/tag.min.js" data-zone="192949" async data-cfasync="false"></script>
+<!-- ✅ ONLY ONE BANNER (MID PAGE) -->
+<div class="ad">
+<script src="https://quge5.com/88/tag.min.js"
+        data-zone="192948"
+        async
+        data-cfasync="false"></script>
 </div>
 
-<button class="buy" onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
-
-<!-- 🔥 MID BANNER 2 -->
-<div class="ad-container">
-<script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
-</div>
+<button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
 
 <select id="withdrawOption">
   <option value="0">Select Withdraw Option</option>
   <option value="600">600 Coins = 900 Followers</option>
   <option value="1200">1200 Coins = 1800 Followers</option>
   <option value="2500">2500 Coins = 4000 Followers</option>
-  <option value="5000">5000 Coins = 7500 Followers</option>
-  <option value="10000">10000 Coins = 15000 Followers</option>
 </select>
 
-<button class="withdraw" onclick="withdraw()">💸 Withdraw</button>
+<button onclick="withdraw()">💸 Withdraw</button>
 
 <div class="note">
 ⚠️ Demo only. No real Instagram followers will be delivered.
 </div>
 </div>
 
-<!-- 🔥 POPUP / VIGNETTE ADS -->
+<!-- ✅ ONLY ONE VIGNETTE / INTERSTITIAL -->
 <script>
 (function(s){
   s.dataset.zone='10328368';
   s.src='https://groleegni.net/vignette.min.js';
-})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+})(document.body.appendChild(document.createElement('script')));
 </script>
 
 <script>
-(function(s){
-  s.dataset.zone='10323043';
-  s.src='https://groleegni.net/vignette.min.js';
-})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-</script>
-
-<!-- 🔥 FOOTER BANNER -->
-<div class="ad-container">
-<script src="https://nap5k.com/tag.min.js" data-zone="10328350" async></script>
-</div>
-
-<script>
-let coins = 0;
-let miningInterval;
-
-function updateCoins(){
-  document.getElementById("coinCount").innerText = coins;
-}
-
+let coins=0, intv;
+function update(){coinCount.innerText=coins;}
 function startMining(){
-  if(miningInterval) return;
-  miningInterval = setInterval(()=>{
-    coins += 1;
-    updateCoins();
-  },3000);
+ if(intv) return;
+ intv=setInterval(()=>{coins++;update();},3000);
 }
-
-function dailyBonus(){
-  coins += 40;
-  updateCoins();
-}
-
+function dailyBonus(){coins+=40;update();}
 function withdraw(){
-  const need = parseInt(document.getElementById("withdrawOption").value);
-  if(need === 0){
-    alert("Please select a withdraw option");
-    return;
-  }
-  if(coins < need){
-    alert("❌ Not enough coins");
-    return;
-  }
-  coins -= need;
-  updateCoins();
-  alert("✅ Withdraw request submitted!\nProcessing may take 24–48 hours (Demo)");
+ let n=+withdrawOption.value;
+ if(!n) return alert("Option select karo");
+ if(coins<n) return alert("Coins kam hain");
+ coins-=n; update();
+ alert("Withdraw request submitted (Demo)");
 }
 </script>
 
