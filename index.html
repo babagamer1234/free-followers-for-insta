@@ -8,6 +8,9 @@
 <!-- Monetag Verification -->
 <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
+<!-- AdMaven Placement Meta -->
+<meta name='admaven-placement' content="BqjwHqjC8">
+
 <style>
 body{
   font-family:'Segoe UI',sans-serif;
@@ -112,6 +115,9 @@ button{
   <!-- NATIVE AD BELOW WITHDRAW -->
   <div class="ad" id="adContainerWithdraw"></div>
 
+  <!-- ADMAVEN NATIVE AD BELOW WITHDRAW SECTION -->
+  <div class="ad" id="adContainerAdMaven"></div>
+
   <div class="note">⚠️ Demo only</div>
 </div>
 
@@ -177,14 +183,27 @@ function loadWithdrawAd(){
     container.appendChild(n);
 }
 
+/* 🔥 Load & reload ADMAVEN native ad every 40 sec */
+function loadAdMaven(){
+    let container = document.getElementById("adContainerAdMaven");
+    container.innerHTML="";
+    let s=document.createElement("script");
+    s.src="https://a.exdynsrv.com/ads.js";
+    s.async=true;
+    container.appendChild(s);
+}
+
 // Initial load after 7 sec
 setTimeout(()=>{
   loadTopAd();
   loadWithdrawAd();
+  loadAdMaven();
   setInterval(loadTopAd,40000);
   setInterval(loadWithdrawAd,40000);
+  setInterval(loadAdMaven,40000);
 },7000);
 
+/* 🔒 ONE-TIME POP/INTERSTITIAL ADS */
 let adFired=false;
 function fireAdsOnce(){
   if(adFired) return;
