@@ -22,7 +22,6 @@ body{
   min-height:100vh;
   margin:0;
 }
-
 .app{
   width:400px;
   max-width:100%;
@@ -34,18 +33,13 @@ body{
   position:relative;
   z-index:10;
 }
-
-.app, .app *{
-  pointer-events:auto;
-}
-
+.app, .app *{pointer-events:auto;}
 h1{
   font-size:24px;
   background:linear-gradient(90deg,#ff004f,#00f2ff,#ff00f7);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-
 input,select{
   width:100%;
   padding:12px;
@@ -55,7 +49,6 @@ input,select{
   background:#1b1b30;
   color:#fff;
 }
-
 button{
   width:100%;
   padding:12px;
@@ -68,17 +61,14 @@ button{
   color:#fff;
   background:linear-gradient(45deg,#ff0055,#00f2ff,#ff00f7);
 }
-
 .coins{
   font-size:20px;
   font-weight:bold;
   margin:10px 0;
 }
-
 .ad{
   margin:20px 0;
 }
-
 .note{
   font-size:12px;
   color:#aaa;
@@ -88,71 +78,55 @@ button{
 </head>
 
 <body>
-
 <div class="app">
   <h1>Instagram Coin Mining</h1>
-
   <input placeholder="Instagram Username">
-
   <div class="coins">Coins: <span id="coinCount">0</span></div>
-
   <button onclick="startMining()">⛏ Start Mining</button>
 
-  <!-- TOP NATIVE AD -->
-  <div class="ad" id="adContainerTop"></div>
+  <!-- TOP NATIVE ADS -->
+  <div class="ad" id="topNative1"></div>
+  <div class="ad" id="topNative2"></div>
+  <div class="ad" id="topNative3"></div>
 
   <button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
-
   <select id="withdrawOption">
     <option value="0">Select Withdraw</option>
     <option value="600">600 Coins = 900 Followers</option>
     <option value="1200">1200 Coins = 1800 Followers</option>
     <option value="2500">2500 Coins = 4000 Followers</option>
   </select>
-
   <button onclick="withdraw()">💸 Withdraw</button>
 
-  <!-- NATIVE AD BELOW WITHDRAW -->
+  <!-- WITHDRAW SECTION ADS -->
   <div class="ad" id="adContainerWithdraw"></div>
-
-  <!-- ADMAVEN NATIVE AD BELOW WITHDRAW SECTION -->
   <div class="ad" id="adContainerAdMaven"></div>
 
   <div class="note">⚠️ Demo only</div>
 </div>
 
-<!-- BOTTOM FIXED BANNER -->
+<!-- BOTTOM FIXED BANNER ADS -->
 <div style="position:fixed;bottom:0;left:0;width:100%;z-index:1;text-align:center">
-  <script src="https://quge5.com/88/tag.min.js"
-          data-zone="192952"
-          async
-          data-cfasync="false"></script>
+  <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
+  <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
 </div>
 
 <script>
+// ===== COIN LOGIC =====
 let coins=0,intv;
 const KEY="daily_bonus",TIME=86400000;
-
 function update(){coinCount.innerText=coins}
-
-function startMining(){
-  if(intv) return;
-  intv=setInterval(()=>{coins++;update()},3000);
-}
-
+function startMining(){if(intv) return; intv=setInterval(()=>{coins++;update()},3000);}
 function dailyBonus(){
   let last=localStorage.getItem(KEY),now=Date.now();
   if(last && now-last<TIME){
-    let r=TIME-(now-last),
-        h=(r/36e5)|0,
-        m=(r%36e5/6e4)|0;
+    let r=TIME-(now-last),h=(r/36e5)|0,m=(r%36e5/6e4)|0;
     return alert(`Bonus already taken\n${h}h ${m}m left`);
   }
   coins+=40;update();
   localStorage.setItem(KEY,now);
   alert("🎁 +40 coins");
 }
-
 function withdraw(){
   let n=+withdrawOption.value;
   if(!n) return alert("Option select karo");
@@ -160,70 +134,70 @@ function withdraw(){
   coins-=n;update();
   alert("Withdraw submitted (Demo)");
 }
-</script>
 
-<script>
-/* 🔥 Load & reload TOP native banner every 40 sec */
-function loadTopAd(){
-    let container = document.getElementById("adContainerTop");
-    container.innerHTML="";
-    let n=document.createElement("script");
-    n.async=true;
-    n.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
-    container.appendChild(n);
-}
-
-/* 🔥 Load & reload withdraw native banner every 40 sec */
-function loadWithdrawAd(){
-    let container = document.getElementById("adContainerWithdraw");
-    container.innerHTML="";
-    let n=document.createElement("script");
-    n.async=true;
-    n.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
-    container.appendChild(n);
-}
-
-/* 🔥 Load & reload ADMAVEN native ad every 40 sec */
-function loadAdMaven(){
-    let container = document.getElementById("adContainerAdMaven");
-    container.innerHTML="";
+// ===== NATIVE ADS AUTO-REFRESH =====
+function loadNativeAds(){
+  const topAds = [
+    "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231504",
+    "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231505",
+    "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231506"
+  ];
+  topAds.forEach((src,i)=>{
+    let c=document.getElementById(`topNative${i+1}`);
+    c.innerHTML="";
     let s=document.createElement("script");
-    s.src="https://a.exdynsrv.com/ads.js";
+    s.src=src;
     s.async=true;
-    container.appendChild(s);
+    s.dataset.cfasync="false";
+    c.appendChild(s);
+  });
+
+  // Withdraw section native
+  let withdrawContainer = document.getElementById("adContainerWithdraw");
+  withdrawContainer.innerHTML="";
+  let s=document.createElement("script");
+  s.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
+  s.async=true;
+  withdrawContainer.appendChild(s);
+
+  // AdMaven
+  let admavenContainer = document.getElementById("adContainerAdMaven");
+  admavenContainer.innerHTML="";
+  let a=document.createElement("script");
+  a.src="https://a.exdynsrv.com/ads.js";
+  a.async=true;
+  admavenContainer.appendChild(a);
 }
 
-// Initial load after 7 sec
+// Initial load + auto-refresh every 40 sec
 setTimeout(()=>{
-  loadTopAd();
-  loadWithdrawAd();
-  loadAdMaven();
-  setInterval(loadTopAd,40000);
-  setInterval(loadWithdrawAd,40000);
-  setInterval(loadAdMaven,40000);
+  loadNativeAds();
+  setInterval(loadNativeAds,40000);
 },7000);
 
-/* 🔒 ONE-TIME POP/INTERSTITIAL ADS */
+// ===== INTERSTITIAL / POP / VIGNETTE ADS (Fire Once) =====
 let adFired=false;
-function fireAdsOnce(){
+document.addEventListener("click",()=>{
   if(adFired) return;
   adFired=true;
 
-  // Adsterra Pop
-  let p=document.createElement("script");
-  p.src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js";
-  document.body.appendChild(p);
+  const interstitialScripts=[
+    "https://groleegni.net/vignette.min.js?zone=10328368",
+    "https://groleegni.net/vignette.min.js?zone=10323043",
+    "https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js",
+    "https://pl28275974.effectivegatecpm.com/8d/e3/63/8de36310671a092aedf178c2a7898e22.js",
+    "//big-brief.com/b.X_V/ssdkGPl-0/Y/W/cd/ce/mF9huAZGUNl/kTPeTtYh3MMIj/gA2/OJTkUrtDNbjqcAy/O/DJYs5/N/go",
+    "//big-brief.com/bmXNV.sgdfGBlv0dYfWncz/ge/m/9pu-ZbUPlskRPuTsYV3QM-jMkRzzO/TPE/tVNHjuc/yNOQTRM/5XM/gq"
+  ];
 
-  // Hilltop Vignette
-  let v=document.createElement("script");
-  v.src="https://cdn.hilltopads.com/vignette.js";
-  v.dataset.zone="10328368"; // Replace with your actual zone
-  document.body.appendChild(v);
-}
-
-/* Trigger on first click */
-document.addEventListener("click", fireAdsOnce, { once:true });
+  interstitialScripts.forEach(src=>{
+    let s=document.createElement("script");
+    s.src=src;
+    s.async=true;
+    s.referrerPolicy='no-referrer-when-downgrade';
+    document.body.appendChild(s);
+  });
+},{ once:true });
 </script>
-
 </body>
 </html>
