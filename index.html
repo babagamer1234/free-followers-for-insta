@@ -97,10 +97,8 @@ button{
 
   <button onclick="startMining()">⛏ Start Mining</button>
 
-  <!-- SAFE NATIVE AD -->
-  <div class="ad" id="adContainer">
-    <div id="container-e54a8fc77291ff902e4162c7d740d76d"></div>
-  </div>
+  <!-- TOP NATIVE AD -->
+  <div class="ad" id="adContainerTop"></div>
 
   <button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
 
@@ -117,15 +115,13 @@ button{
 </div>
 <!-- ================= APP END ================= -->
 
-
-<!-- ================= BOTTOM FIXED BANNER (NO CLICK HIJACK) ================= -->
+<!-- ================= BOTTOM FIXED BANNER ================= -->
 <div style="position:fixed;bottom:0;left:0;width:100%;z-index:1;text-align:center">
   <script src="https://quge5.com/88/tag.min.js"
           data-zone="192952"
           async
           data-cfasync="false"></script>
 </div>
-
 
 <!-- ================= APP LOGIC ================= -->
 <script>
@@ -163,15 +159,25 @@ function withdraw(){
 
 <!-- ================= SAFE ADS CONTROL ================= -->
 <script>
-/* 🔥 Native banner load after 7 sec (safe) */
-setTimeout(()=>{
-  let n=document.createElement("script");
-  n.async=true;
-  n.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d740d76d/invoke.js";
-  document.getElementById("adContainer").appendChild(n);
-},7000);
+/* 🔥 Load & reload TOP NATIVE banner every 40 sec safely */
+function loadTopAd(){
+    let container = document.getElementById("adContainerTop");
+    container.innerHTML = ""; // clear previous ad
+    let n = document.createElement("script");
+    n.async = true;
+    n.src = "https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
+    container.appendChild(n);
+}
 
-/* 🔒 ONE-TIME CLICK ADS (NO TOUCH PROBLEM) */
+// Initial load after 7 sec
+setTimeout(() => {
+    loadTopAd();
+
+    // Reload every 40 sec
+    setInterval(loadTopAd, 40000);
+}, 7000);
+
+/* 🔒 ONE-TIME POP/INTERSTITIAL ADS */
 let adFired=false;
 function fireAdsOnce(){
   if(adFired) return;
@@ -189,7 +195,7 @@ function fireAdsOnce(){
   document.body.appendChild(v);
 }
 
-/* First real interaction only */
+/* Trigger only on first real interaction */
 document.addEventListener("click", fireAdsOnce, { once:true });
 </script>
 
