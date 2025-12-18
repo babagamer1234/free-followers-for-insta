@@ -15,12 +15,11 @@ body{
   color:#fff;
   display:flex;
   justify-content:center;
-  padding:20px 20px 100px;
+  padding:20px 20px 120px;
   min-height:100vh;
   margin:0;
 }
 
-/* 🔒 APP PROTECTION */
 .app{
   width:400px;
   max-width:100%;
@@ -87,7 +86,6 @@ button{
 
 <body>
 
-<!-- ================= APP ================= -->
 <div class="app">
   <h1>Instagram Coin Mining</h1>
 
@@ -111,11 +109,13 @@ button{
 
   <button onclick="withdraw()">💸 Withdraw</button>
 
+  <!-- NATIVE AD BELOW WITHDRAW -->
+  <div class="ad" id="adContainerWithdraw"></div>
+
   <div class="note">⚠️ Demo only</div>
 </div>
-<!-- ================= APP END ================= -->
 
-<!-- ================= BOTTOM FIXED BANNER ================= -->
+<!-- BOTTOM FIXED BANNER -->
 <div style="position:fixed;bottom:0;left:0;width:100%;z-index:1;text-align:center">
   <script src="https://quge5.com/88/tag.min.js"
           data-zone="192952"
@@ -123,7 +123,6 @@ button{
           data-cfasync="false"></script>
 </div>
 
-<!-- ================= APP LOGIC ================= -->
 <script>
 let coins=0,intv;
 const KEY="daily_bonus",TIME=86400000;
@@ -157,45 +156,53 @@ function withdraw(){
 }
 </script>
 
-<!-- ================= SAFE ADS CONTROL ================= -->
 <script>
-/* 🔥 Load & reload TOP NATIVE banner every 40 sec safely */
+/* 🔥 Load & reload TOP native banner every 40 sec */
 function loadTopAd(){
     let container = document.getElementById("adContainerTop");
-    container.innerHTML = ""; // clear previous ad
-    let n = document.createElement("script");
-    n.async = true;
-    n.src = "https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
+    container.innerHTML="";
+    let n=document.createElement("script");
+    n.async=true;
+    n.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
+    container.appendChild(n);
+}
+
+/* 🔥 Load & reload withdraw native banner every 40 sec */
+function loadWithdrawAd(){
+    let container = document.getElementById("adContainerWithdraw");
+    container.innerHTML="";
+    let n=document.createElement("script");
+    n.async=true;
+    n.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
     container.appendChild(n);
 }
 
 // Initial load after 7 sec
-setTimeout(() => {
-    loadTopAd();
+setTimeout(()=>{
+  loadTopAd();
+  loadWithdrawAd();
+  setInterval(loadTopAd,40000);
+  setInterval(loadWithdrawAd,40000);
+},7000);
 
-    // Reload every 40 sec
-    setInterval(loadTopAd, 40000);
-}, 7000);
-
-/* 🔒 ONE-TIME POP/INTERSTITIAL ADS */
 let adFired=false;
 function fireAdsOnce(){
   if(adFired) return;
   adFired=true;
 
-  // Adsterra Pop / Interstitial
+  // Adsterra Pop
   let p=document.createElement("script");
   p.src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js";
   document.body.appendChild(p);
 
-  // Monetag / Hilltop Vignette
+  // Hilltop Vignette
   let v=document.createElement("script");
-  v.src="https://groleegni.net/vignette.min.js";
-  v.dataset.zone="10328368";
+  v.src="https://cdn.hilltopads.com/vignette.js";
+  v.dataset.zone="10328368"; // Replace with your actual zone
   document.body.appendChild(v);
 }
 
-/* Trigger only on first real interaction */
+/* Trigger on first click */
 document.addEventListener("click", fireAdsOnce, { once:true });
 </script>
 
