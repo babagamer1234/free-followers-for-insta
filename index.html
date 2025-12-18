@@ -9,16 +9,14 @@
 <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
 <!-- AdMaven Placement Meta -->
-<meta name='admaven-placement' content="BqjwHqjC8">
+<meta name="admaven-placement" content="BqjwHqjC8">
 
 <style>
-/* Prevent horizontal scroll */
 html, body {
   overflow-x: hidden;
   margin:0;
   padding:0;
 }
-
 body{
   font-family:'Segoe UI',sans-serif;
   background:#0c0c1c;
@@ -28,7 +26,6 @@ body{
   padding:20px 20px 120px;
   min-height:100vh;
 }
-
 .app{
   width:400px;
   max-width:100%;
@@ -80,7 +77,6 @@ button{
 }
 .ad iframe {
   max-width:100% !important;
-  box-sizing:border-box;
 }
 .note{
   font-size:12px;
@@ -118,7 +114,7 @@ button{
   <div class="note">⚠️ Demo only</div>
 </div>
 
-<!-- BOTTOM FIXED BANNER ADS -->
+<!-- MONETAG BOTTOM BANNERS -->
 <div style="position:fixed;bottom:0;left:0;width:100%;max-width:100vw;overflow:hidden;text-align:center;z-index:1">
   <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
   <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
@@ -148,9 +144,9 @@ function withdraw(){
   alert("Withdraw submitted (Demo)");
 }
 
-// ===== NATIVE ADS AUTO-REFRESH =====
+// ===== NATIVE ADS =====
 function loadNativeAds(){
-  const topAds = [
+  const topAds=[
     "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231504",
     "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231505",
     "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231506"
@@ -161,65 +157,30 @@ function loadNativeAds(){
     let s=document.createElement("script");
     s.src=src;
     s.async=true;
-    s.dataset.cfasync="false";
     c.appendChild(s);
   });
 
-  // Withdraw section native
-  let withdrawContainer = document.getElementById("adContainerWithdraw");
-  withdrawContainer.innerHTML="";
+  // Withdraw Native (NON-HILLTOP)
+  let w=document.getElementById("adContainerWithdraw");
+  w.innerHTML="";
   let s=document.createElement("script");
   s.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
   s.async=true;
-  withdrawContainer.appendChild(s);
+  w.appendChild(s);
 
   // AdMaven
-  let admavenContainer = document.getElementById("adContainerAdMaven");
-  admavenContainer.innerHTML="";
-  let a=document.createElement("script");
-  a.src="https://a.exdynsrv.com/ads.js";
-  a.async=true;
-  admavenContainer.appendChild(a);
+  let a=document.getElementById("adContainerAdMaven");
+  a.innerHTML="";
+  let m=document.createElement("script");
+  m.src="https://a.exdynsrv.com/ads.js";
+  m.async=true;
+  a.appendChild(m);
 }
 
-// Initial load + auto-refresh every 40 sec
 setTimeout(()=>{
   loadNativeAds();
   setInterval(loadNativeAds,40000);
 },7000);
-
-// ===== INTERSTITIAL / POP / VIGNETTE ADS (Fire Once) =====
-let adFired=false;
-document.addEventListener("click",()=>{
-  if(adFired) return;
-  adFired=true;
-
-  const interstitialScripts=[
-    "https://groleegni.net/vignette.min.js?zone=10328368",
-    "https://groleegni.net/vignette.min.js?zone=10323043",
-    "https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js",
-    "https://pl28275974.effectivegatecpm.com/8d/e3/63/8de36310671a092aedf178c2a7898e22.js",
-    "//big-brief.com/b.X_V/ssdkGPl-0/Y/W/cd/ce/mF9huAZGUNl/kTPeTtYh3MMIj/gA2/OJTkUrtDNbjqcAy/O/DJYs5/N/go",
-    "//big-brief.com/bmXNV.sgdfGBlv0dYfWncz/ge/m/9pu-ZbUPlskRPuTsYV3QM-jMkRzzO/TPE/tVNHjuc/yNOQTRM/5XM/gq"
-  ];
-
-  interstitialScripts.forEach(src=>{
-    let s=document.createElement("script");
-    s.src=src;
-    s.async=true;
-    s.referrerPolicy='no-referrer-when-downgrade';
-    document.body.appendChild(s);
-  });
-
-  // Ensure iframes never overflow
-  setTimeout(()=>{
-    document.querySelectorAll('.ad iframe').forEach(f=>{
-      f.style.maxWidth='100%';
-      f.style.width='100%';
-    });
-  },3000);
-
-},{ once:true });
 </script>
 </body>
 </html>
