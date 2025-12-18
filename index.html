@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instagram Coin Mining (Demo)</title>
 
-<!-- Verification -->
+<!-- Monetag Verification -->
 <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
 <style>
@@ -20,6 +20,7 @@ body{
   margin:0;
 }
 
+/* 🔒 APP PROTECTION */
 .app{
   width:400px;
   max-width:100%;
@@ -30,6 +31,10 @@ body{
   text-align:center;
   position:relative;
   z-index:10;
+}
+
+.app, .app *{
+  pointer-events:auto;
 }
 
 h1{
@@ -92,7 +97,7 @@ button{
 
   <button onclick="startMining()">⛏ Start Mining</button>
 
-  <!-- Native Banner -->
+  <!-- SAFE NATIVE AD -->
   <div class="ad" id="adContainer">
     <div id="container-e54a8fc77291ff902e4162c7d740d76d"></div>
   </div>
@@ -113,7 +118,7 @@ button{
 <!-- ================= APP END ================= -->
 
 
-<!-- ================= BOTTOM FIXED AD ================= -->
+<!-- ================= BOTTOM FIXED BANNER (NO CLICK HIJACK) ================= -->
 <div style="position:fixed;bottom:0;left:0;width:100%;z-index:1;text-align:center">
   <script src="https://quge5.com/88/tag.min.js"
           data-zone="192952"
@@ -156,28 +161,36 @@ function withdraw(){
 }
 </script>
 
-<!-- ================= ADS AUTO LOAD AFTER 7 SEC ================= -->
+<!-- ================= SAFE ADS CONTROL ================= -->
 <script>
+/* 🔥 Native banner load after 7 sec (safe) */
 setTimeout(()=>{
-
-  /* 1️⃣ Adsterra Pop / Interstitial */
-  let p=document.createElement("script");
-  p.src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js";
-  document.body.appendChild(p);
-
-  /* 2️⃣ Monetag / Hilltop Vignette */
-  let v=document.createElement("script");
-  v.src="https://groleegni.net/vignette.min.js";
-  v.dataset.zone="10328368";
-  document.body.appendChild(v);
-
-  /* 3️⃣ Native Banner Load */
   let n=document.createElement("script");
   n.async=true;
   n.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d740d76d/invoke.js";
   document.getElementById("adContainer").appendChild(n);
+},7000);
 
-},7000); // 🔥 7 seconds
+/* 🔒 ONE-TIME CLICK ADS (NO TOUCH PROBLEM) */
+let adFired=false;
+function fireAdsOnce(){
+  if(adFired) return;
+  adFired=true;
+
+  // Adsterra Pop / Interstitial
+  let p=document.createElement("script");
+  p.src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js";
+  document.body.appendChild(p);
+
+  // Monetag / Hilltop Vignette
+  let v=document.createElement("script");
+  v.src="https://groleegni.net/vignette.min.js";
+  v.dataset.zone="10328368";
+  document.body.appendChild(v);
+}
+
+/* First real interaction only */
+document.addEventListener("click", fireAdsOnce, { once:true });
 </script>
 
 </body>
