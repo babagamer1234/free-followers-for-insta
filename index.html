@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instagram Coin Mining (Demo)</title>
 
-<!-- Monetag Verification -->
+<!-- ✅ Monetag Verification -->
 <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
-<!-- AdMaven Placement Meta -->
-<meta name="admaven-placement" content="BqjwHqjC8">
+<!-- ✅ AdMaven MAIN CODE (VERY IMPORTANT) -->
+<script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231723"></script>
 
 <style>
 html, body {
@@ -34,10 +34,7 @@ body{
   padding:25px;
   box-shadow:0 0 20px rgba(0,0,0,.7);
   text-align:center;
-  position:relative;
-  z-index:10;
 }
-.app, .app *{pointer-events:auto;}
 h1{
   font-size:24px;
   background:linear-gradient(90deg,#ff004f,#00f2ff,#ff00f7);
@@ -72,11 +69,6 @@ button{
 }
 .ad{
   margin:20px 0;
-  max-width:100%;
-  overflow:hidden;
-}
-.ad iframe {
-  max-width:100% !important;
 }
 .note{
   font-size:12px;
@@ -87,100 +79,101 @@ button{
 </head>
 
 <body>
+
 <div class="app">
   <h1>Instagram Coin Mining</h1>
+
   <input placeholder="Instagram Username">
+
   <div class="coins">Coins: <span id="coinCount">0</span></div>
+
   <button onclick="startMining()">⛏ Start Mining</button>
 
-  <!-- TOP NATIVE ADS -->
+  <!-- Monetag / Other Native Ads -->
   <div class="ad" id="topNative1"></div>
   <div class="ad" id="topNative2"></div>
   <div class="ad" id="topNative3"></div>
 
   <button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
+
   <select id="withdrawOption">
     <option value="0">Select Withdraw</option>
     <option value="600">600 Coins = 900 Followers</option>
     <option value="1200">1200 Coins = 1800 Followers</option>
     <option value="2500">2500 Coins = 4000 Followers</option>
   </select>
-  <button onclick="withdraw()">💸 Withdraw</button>
 
-  <!-- WITHDRAW SECTION ADS -->
-  <div class="ad" id="adContainerWithdraw"></div>
-  <div class="ad" id="adContainerAdMaven"></div>
+  <button onclick="withdraw()">💸 Withdraw</button>
 
   <div class="note">⚠️ Demo only</div>
 </div>
 
-<!-- MONETAG BOTTOM BANNERS -->
-<div style="position:fixed;bottom:0;left:0;width:100%;max-width:100vw;overflow:hidden;text-align:center;z-index:1">
+<!-- ✅ MONETAG BOTTOM BANNERS -->
+<div style="position:fixed;bottom:0;left:0;width:100%;text-align:center;z-index:1">
   <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
   <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
 </div>
 
 <script>
-// ===== COIN LOGIC =====
-let coins=0,intv;
-const KEY="daily_bonus",TIME=86400000;
-function update(){coinCount.innerText=coins}
-function startMining(){if(intv) return; intv=setInterval(()=>{coins++;update()},3000);}
-function dailyBonus(){
-  let last=localStorage.getItem(KEY),now=Date.now();
-  if(last && now-last<TIME){
-    let r=TIME-(now-last),h=(r/36e5)|0,m=(r%36e5/6e4)|0;
-    return alert(`Bonus already taken\n${h}h ${m}m left`);
-  }
-  coins+=40;update();
-  localStorage.setItem(KEY,now);
-  alert("🎁 +40 coins");
+// ===== COIN SYSTEM =====
+let coins = 0;
+let intv = null;
+
+function updateCoins(){
+  document.getElementById("coinCount").innerText = coins;
 }
+
+function startMining(){
+  if(intv) return;
+  intv = setInterval(()=>{
+    coins++;
+    updateCoins();
+  },3000);
+}
+
+const BONUS_KEY="daily_bonus";
+const BONUS_TIME=86400000;
+
+function dailyBonus(){
+  let last = localStorage.getItem(BONUS_KEY);
+  let now = Date.now();
+  if(last && now-last < BONUS_TIME){
+    alert("Bonus already taken");
+    return;
+  }
+  coins += 40;
+  updateCoins();
+  localStorage.setItem(BONUS_KEY, now);
+}
+
 function withdraw(){
-  let n=+withdrawOption.value;
-  if(!n) return alert("Option select karo");
-  if(coins<n) return alert("Coins kam hain");
-  coins-=n;update();
+  let need = +document.getElementById("withdrawOption").value;
+  if(!need) return alert("Option select karo");
+  if(coins < need) return alert("Coins kam hain");
+  coins -= need;
+  updateCoins();
   alert("Withdraw submitted (Demo)");
 }
 
-// ===== NATIVE ADS =====
+// ===== MONETAG NATIVE LOAD =====
 function loadNativeAds(){
-  const topAds=[
+  const ads=[
     "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231504",
     "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231505",
     "//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231506"
   ];
-  topAds.forEach((src,i)=>{
-    let c=document.getElementById(`topNative${i+1}`);
-    c.innerHTML="";
+  ads.forEach((src,i)=>{
+    let d=document.getElementById("topNative"+(i+1));
+    d.innerHTML="";
     let s=document.createElement("script");
     s.src=src;
     s.async=true;
-    c.appendChild(s);
+    d.appendChild(s);
   });
-
-  // Withdraw Native (NON-HILLTOP)
-  let w=document.getElementById("adContainerWithdraw");
-  w.innerHTML="";
-  let s=document.createElement("script");
-  s.src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d/invoke.js";
-  s.async=true;
-  w.appendChild(s);
-
-  // AdMaven
-  let a=document.getElementById("adContainerAdMaven");
-  a.innerHTML="";
-  let m=document.createElement("script");
-  m.src="https://a.exdynsrv.com/ads.js";
-  m.async=true;
-  a.appendChild(m);
 }
 
-setTimeout(()=>{
-  loadNativeAds();
-  setInterval(loadNativeAds,40000);
-},7000);
+setTimeout(loadNativeAds,7000);
 </script>
+
 </body>
 </html>
