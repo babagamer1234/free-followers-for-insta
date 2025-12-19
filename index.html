@@ -8,7 +8,7 @@
   <!-- ✅ Monetag Verification -->
   <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
-  <!-- ✅ AdMaven Ads (Copy and paste this placement's source code between <head> and </head>) -->
+  <!-- ✅ AdMaven MAIN loader (Head placement) -->
   <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231723"></script>
   <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231506"></script>
   <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231505"></script>
@@ -16,65 +16,133 @@
 
   <!-- ✅ Styles -->
   <style>
-    html, body { overflow-x:hidden; margin:0; padding:0; background:#0c0c1c; color:#fff; font-family:'Segoe UI',sans-serif;}
-    body { display:flex; justify-content:center; padding:20px 20px 120px; min-height:100vh;}
-    .app { width:400px; max-width:100%; background:#11111f; border-radius:20px; padding:25px; box-shadow:0 0 20px rgba(0,0,0,.7); text-align:center;}
-    h1 { font-size:24px; background:linear-gradient(90deg,#ff004f,#00f2ff,#ff00f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
-    input, select { width:100%; padding:12px; border-radius:10px; border:none; margin:10px 0; background:#1b1b30; color:#fff;}
-    button { width:100%; padding:12px; border:none; border-radius:12px; font-size:16px; margin-top:10px; cursor:pointer; font-weight:600; color:#fff; background:linear-gradient(45deg,#ff0055,#00f2ff,#ff00f7);}
-    .coins { font-size:20px; font-weight:bold; margin:10px 0;}
-    .note { font-size:12px; color:#aaa; margin-top:10px;}
-    .ad-container { width:100%; max-width:400px; margin:15px auto; text-align:center;} /* responsive ads */
+    html, body {
+      margin:0; padding:0;
+      background:#0c0c1c; color:#fff;
+      font-family:'Segoe UI',sans-serif;
+      overflow-x:hidden;
+    }
+    body {
+      display:flex;
+      justify-content:center; /* horizontal center */
+      align-items:flex-start;
+      min-height:100vh;
+      padding:20px;
+    }
+    .wrapper {
+      display:flex;
+      flex-direction:column; /* stack app + ads vertically */
+      align-items:center;
+      width:100%;
+    }
+    .app {
+      width:400px;
+      max-width:100%;
+      background:#11111f;
+      border-radius:20px;
+      padding:25px;
+      box-shadow:0 0 20px rgba(0,0,0,0.7);
+      text-align:center;
+      margin-bottom:20px;
+    }
+    h1 {
+      font-size:24px;
+      background:linear-gradient(90deg,#ff004f,#00f2ff,#ff00f7);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    input, select {
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:none;
+      margin:10px 0;
+      background:#1b1b30;
+      color:#fff;
+    }
+    button {
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:12px;
+      font-size:16px;
+      margin-top:10px;
+      cursor:pointer;
+      font-weight:600;
+      color:#fff;
+      background:linear-gradient(45deg,#ff0055,#00f2ff,#ff00f7);
+    }
+    .coins {
+      font-size:20px;
+      font-weight:bold;
+      margin:10px 0;
+    }
+    .note {
+      font-size:12px;
+      color:#aaa;
+      margin-top:10px;
+    }
+    .ad-container {
+      width:100%;
+      max-width:400px;
+      margin:10px auto;
+      text-align:center;
+    }
   </style>
-
-  <!-- ✅ Adsterra Ads (Head scripts can also stay here if needed, but safer in body) -->
-
 </head>
 <body>
 
-<div class="app">
-  <h1>Instagram Coin Mining</h1>
-  <input placeholder="Instagram Username">
+<div class="wrapper">
+  <div class="app">
+    <h1>Instagram Coin Mining</h1>
+    <input placeholder="Instagram Username">
 
-  <div class="coins">Coins: <span id="coinCount">0</span></div>
+    <div class="coins">Coins: <span id="coinCount">0</span></div>
 
-  <button onclick="startMining()">⛏ Start Mining</button>
-  <button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
+    <button onclick="startMining()">⛏ Start Mining</button>
+    <button onclick="dailyBonus()">🎁 Daily Bonus (+40)</button>
 
-  <select id="withdrawOption">
-    <option value="0">Select Withdraw</option>
-    <option value="600">600 Coins = 900 Followers</option>
-    <option value="1200">1200 Coins = 1800 Followers</option>
-    <option value="2500">2500 Coins = 4000 Followers</option>
-  </select>
+    <select id="withdrawOption">
+      <option value="0">Select Withdraw</option>
+      <option value="600">600 Coins = 900 Followers</option>
+      <option value="1200">1200 Coins = 1800 Followers</option>
+      <option value="2500">2500 Coins = 4000 Followers</option>
+    </select>
 
-  <button onclick="withdraw()">💸 Withdraw</button>
-  <div class="note">⚠️ Demo only</div>
+    <button onclick="withdraw()">💸 Withdraw</button>
+
+    <div class="note">⚠️ Demo only</div>
+  </div>
+
+  <!-- ✅ Ads below the app -->
+  <div class="ad-container">
+    <!-- Adsterra 1 -->
+    <script type="text/javascript" src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js"></script>
+  </div>
+
+  <div class="ad-container">
+    <!-- Adsterra 2 -->
+    <script async data-cfasync="false" src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d740d76d/invoke.js"></script>
+    <div id="container-e54a8fc77291ff902e4162c7d740d76d"></div>
+  </div>
+
+  <div class="ad-container">
+    <!-- Adsterra 3 -->
+    <script type="text/javascript" src="https://pl28275974.effectivegatecpm.com/8d/e3/63/8de36310671a092aedf178c2a7898e22.js"></script>
+  </div>
+
+  <div class="ad-container">
+    <!-- Monetag Bottom Banner 1 -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
+  </div>
+
+  <div class="ad-container">
+    <!-- Monetag Bottom Banner 2 -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
+  </div>
 </div>
 
-<!-- ✅ Ad Containers for Body (Adsterra / Monetag responsive placements) -->
-<div class="ad-container" id="adsterra1">
-  <script type="text/javascript" src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js"></script>
-</div>
-
-<div class="ad-container" id="adsterra2">
-  <script async data-cfasync="false" src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d740d76d/invoke.js"></script>
-  <div id="container-e54a8fc77291ff902e4162c7d740d76d"></div>
-</div>
-
-<div class="ad-container" id="adsterra3">
-  <script type="text/javascript" src="https://pl28275974.effectivegatecpm.com/8d/e3/63/8de36310671a092aedf178c2a7898e22.js"></script>
-</div>
-
-<div class="ad-container" id="monetag1">
-  <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
-</div>
-
-<div class="ad-container" id="monetag2">
-  <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
-</div>
-
-<!-- ✅ Coin System Script -->
+<!-- ✅ Coins System Script -->
 <script>
 let coins = 0;
 let intv = null;
