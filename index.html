@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instagram Coin Mining (Demo)</title>
 
+  <!-- ✅ CLCKD / Clickadu Verification -->
+  <meta name="clckd" content="dcfcf7bccc3c1b1fd3311c55f5975a1d" />
+
   <!-- ✅ Monetag Verification -->
   <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
@@ -45,8 +48,8 @@
       text-align:center;
       margin-bottom:20px;
       position: relative;
-      z-index: 9999; /* top layer */
-      pointer-events: auto; /* buttons clickable */
+      z-index: 9999;
+      pointer-events: auto;
     }
     h1 {
       font-size:24px;
@@ -92,10 +95,11 @@
       text-align:center;
       position: relative;
       z-index: 1;
-      pointer-events: none; /* prevent click hijack */
+      pointer-events: none;
     }
   </style>
 </head>
+
 <body>
 
 <div class="wrapper">
@@ -122,43 +126,40 @@
 
   <!-- ✅ Ads below the app -->
   <div class="ad-container">
-    <!-- Adsterra 1 -->
     <script type="text/javascript" src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js"></script>
   </div>
 
   <div class="ad-container">
-    <!-- Adsterra 2 -->
     <script async data-cfasync="false" src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d740d76d/invoke.js"></script>
     <div id="container-e54a8fc77291ff902e4162c7d740d76d"></div>
   </div>
 
   <div class="ad-container">
-    <!-- Adsterra 3 -->
     <script type="text/javascript" src="https://pl28275974.effectivegatecpm.com/8d/e3/63/8de36310671a092aedf178c2a7898e22.js"></script>
   </div>
 
   <div class="ad-container">
-    <!-- Monetag Bottom Banner 1 -->
     <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async data-cfasync="false"></script>
   </div>
 
   <div class="ad-container">
-    <!-- Monetag Bottom Banner 2 -->
     <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async data-cfasync="false"></script>
   </div>
 </div>
 
-<!-- ✅ Coins System Script -->
 <script>
 let coins = 0;
 let intv = null;
 
-function updateCoins(){ document.getElementById("coinCount").innerText = coins; }
+function updateCoins(){
+  document.getElementById("coinCount").innerText = coins;
+}
 
 function startMining(){
   if(intv) return;
   intv = setInterval(()=>{
-    coins++; updateCoins();
+    coins++;
+    updateCoins();
   },3000);
 }
 
@@ -172,7 +173,8 @@ function dailyBonus(){
     alert("Bonus already taken");
     return;
   }
-  coins += 40; updateCoins();
+  coins += 40;
+  updateCoins();
   localStorage.setItem(BONUS_KEY, now);
 }
 
@@ -180,7 +182,8 @@ function withdraw(){
   let need = +document.getElementById("withdrawOption").value;
   if(!need) return alert("Option select karo");
   if(coins < need) return alert("Coins kam hain");
-  coins -= need; updateCoins();
+  coins -= need;
+  updateCoins();
   alert("Withdraw submitted (Demo)");
 }
 </script>
