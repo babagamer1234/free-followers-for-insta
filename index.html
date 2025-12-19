@@ -44,6 +44,9 @@
       box-shadow:0 0 20px rgba(0,0,0,0.7);
       text-align:center;
       margin-bottom:20px;
+      position: relative;
+      z-index: 10; /* keep app on top of ads */
+      pointer-events: auto; /* clicks go to buttons */
     }
     h1 {
       font-size:24px;
@@ -87,6 +90,9 @@
       max-width:400px;
       margin:10px auto;
       text-align:center;
+      position: relative;
+      z-index: 1;
+      pointer-events: none; /* prevent clicks from hijacking app */
     }
   </style>
 </head>
@@ -114,7 +120,7 @@
     <div class="note">⚠️ Demo only</div>
   </div>
 
-  <!-- ✅ Ads below the app -->
+  <!-- ✅ Ads below the app (pointer-events disabled to avoid click hijack) -->
   <div class="ad-container">
     <!-- Adsterra 1 -->
     <script type="text/javascript" src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js"></script>
