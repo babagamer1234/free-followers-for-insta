@@ -8,13 +8,12 @@
   <!-- ✅ Monetag Verification -->
   <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
-  <head>
   <!-- ✅ AdMaven MAIN loader (Head placement) -->
   <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231723"></script>
   <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231506"></script>
   <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231505"></script>
   <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231504"></script>
-</head>
+
   <!-- ✅ Styles -->
   <style>
     html, body {
@@ -25,14 +24,14 @@
     }
     body {
       display:flex;
-      justify-content:center; /* horizontal center */
+      justify-content:center; 
       align-items:flex-start;
       min-height:100vh;
       padding:20px;
     }
     .wrapper {
       display:flex;
-      flex-direction:column; /* stack app + ads vertically */
+      flex-direction:column; 
       align-items:center;
       width:100%;
     }
@@ -46,8 +45,8 @@
       text-align:center;
       margin-bottom:20px;
       position: relative;
-      z-index: 10; /* keep app on top of ads */
-      pointer-events: auto; /* clicks go to buttons */
+      z-index: 9999; /* top layer */
+      pointer-events: auto; /* buttons clickable */
     }
     h1 {
       font-size:24px;
@@ -93,7 +92,7 @@
       text-align:center;
       position: relative;
       z-index: 1;
-      pointer-events: none; /* prevent clicks from hijacking app */
+      pointer-events: none; /* prevent click hijack */
     }
   </style>
 </head>
@@ -121,7 +120,7 @@
     <div class="note">⚠️ Demo only</div>
   </div>
 
-  <!-- ✅ Ads below the app (pointer-events disabled to avoid click hijack) -->
+  <!-- ✅ Ads below the app -->
   <div class="ad-container">
     <!-- Adsterra 1 -->
     <script type="text/javascript" src="https://pl28275984.effectivegatecpm.com/d8/53/04/d85304fa9cbcc02b2cb59c81be02866f.js"></script>
