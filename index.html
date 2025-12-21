@@ -9,13 +9,9 @@
 <meta name="clckd" content="dcfcf7bccc3c1b1fd3311c55f5975a1d">
 <meta name="monetag" content="4d41c4fe203a6b0848cf2d6c1fae03fb">
 
-<!-- AdMaven MAIN loader -->
-  <head>
+<!-- AdMaven MAIN loader (ONLY ONCE) -->
 <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231723"></script>
-<script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231506"></script>
-<script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231505"></script>
-<script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1231504"></script>
-  </head>
+
 <!-- Adcash ACLIB -->
 <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
 
@@ -51,8 +47,7 @@ body {
   text-align:center;
   margin-bottom:20px;
   position: relative;
-  z-index: 9999;
-  pointer-events:auto;
+  z-index: 10;
 }
 h1 {
   font-size:24px;
@@ -91,19 +86,12 @@ button {
   color:#aaa;
   margin-top:10px;
 }
-
-/* Ads below form */
 .ad-container {
   width:100%;
   max-width:400px;
   margin:15px auto;
   text-align:center;
-  position:relative;
-  z-index:1;
-  pointer-events:auto;
 }
-
-/* Video Slider corner */
 #ac-video-slider {
   position:fixed;
   bottom:15px;
@@ -117,7 +105,6 @@ button {
 
 <div class="wrapper">
 
-  <!-- MAIN FORM -->
   <div class="app">
     <h1>Instagram Coin Mining</h1>
     <input placeholder="Instagram Username">
@@ -138,62 +125,87 @@ button {
     <div class="note">⚠️ Demo only</div>
   </div>
 
-  <!-- ADS BELOW FORM -->
+  <!-- ADS BELOW -->
   <div class="ad-container">
-    <script src="https://quge5.com/88/tag.min.js" data-zone="192949" async data-cfasync="false"></script>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="192949" async></script>
   </div>
 
   <div class="ad-container">
-    <script async data-cfasync="false" src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d740d76d/invoke.js"></script>
+    <script async src="https://pl28275995.effectivegatecpm.com/e54a8fc77291ff902e4162c7d740d76d/invoke.js"></script>
     <div id="container-e54a8fc77291ff902e4162c7d740d76d"></div>
-  </div>
-
-  <div class="ad-container">
-    <script src="https://pl28275974.effectivegatecpm.com/8d/e3/63/8de36310671a092aedf178c2a7898e22.js"></script>
   </div>
 
   <div class="ad-container">
     <script src="https://quge5.com/88/tag.min.js" data-zone="192952" async></script>
   </div>
 
-  <div class="ad-container">
-    <script src="https://quge5.com/88/tag.min.js" data-zone="192951" async></script>
-  </div>
-
 </div>
 
-<!-- Adcash AutoTag -->
+<!-- Adcash -->
 <script>
-  aclib.runAutoTag({zoneId:'irulg0apo6'});
+aclib.runAutoTag({ zoneId:'irulg0apo6' });
+setTimeout(()=>{
+  aclib.runVideoSlider({ zoneId:'10733070', container:'ac-video-slider' });
+},4000);
 </script>
-
-<!-- Adcash Video Slider (1 instance only) -->
 <div id="ac-video-slider"></div>
+
+<!-- QualiClicks (2 FEEDS – SAFE LOAD AFTER 5s) -->
 <script>
 setTimeout(function(){
-  aclib.runVideoSlider({
-    zoneId: '10733070',
-    container: 'ac-video-slider'
+
+  (function(i,n){
+    i.inpagepush=i.inpagepush||function(){
+      (i.inpagepush.q=i.inpagepush.q||[]).push(arguments)
+    };
+    var s=n.getElementsByTagName('head')[0];
+    var q=n.createElement('script'); q.async=1;
+    q.src='//static.qualiclicks.com/inpage/inpage.js';
+    s.appendChild(q);
+  })(window,document);
+
+  inpagepush('init',{
+    host:'xml.qualiclicks.com',
+    feed:990842,
+    auth:'fCm4',
+    refresh:60,
+    position:'bottom',
+    slots:1,
+    nodesrc:true
   });
-}, 4000);
+
+  inpagepush('init',{
+    host:'xml.qualiclicks.com',
+    feed:990841,
+    auth:'8rMm',
+    refresh:60,
+    position:'bottom',
+    slots:1,
+    nodesrc:true
+  });
+
+  inpagepush('show');
+
+},5000);
 </script>
 
-<!-- SAFE BUTTON CLICK -->
+<!-- LOGIC -->
 <script>
-function safeClick(e,fn){
-  e.preventDefault();
-  e.stopPropagation();
-  fn();
-}
-</script>
-
-<!-- COIN SCRIPT -->
-<script>
+function safeClick(e,fn){e.preventDefault();e.stopPropagation();fn();}
 let coins=0,intv=null;
-function updateCoins(){document.getElementById("coinCount").innerText=coins;}
+function updateCoins(){coinCount.innerText=coins;}
 function startMining(){if(intv)return;intv=setInterval(()=>{coins++;updateCoins();},3000);}
-function dailyBonus(){let last=localStorage.getItem("daily_bonus");let now=Date.now();if(last && now-last<86400000){alert("Bonus already taken");return;}coins+=40;updateCoins();localStorage.setItem("daily_bonus",now);}
-function withdraw(){let need=+document.getElementById("withdrawOption").value;if(!need)return alert("Option select karo");if(coins<need)return alert("Coins kam hain");coins-=need;updateCoins();alert("Withdraw submitted (Demo)");}
+function dailyBonus(){
+  let last=localStorage.getItem("daily_bonus");
+  if(last && Date.now()-last<86400000) return alert("Bonus already taken");
+  coins+=40; updateCoins(); localStorage.setItem("daily_bonus",Date.now());
+}
+function withdraw(){
+  let need=+withdrawOption.value;
+  if(!need) return alert("Option select karo");
+  if(coins<need) return alert("Coins kam hain");
+  coins-=need; updateCoins(); alert("Withdraw submitted (Demo)");
+}
 </script>
 
 </body>
